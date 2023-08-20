@@ -19,12 +19,6 @@ This is a RESTful API project for managing users and tasks. It includes user aut
 Clone this repository to your local machine to get started.
 
 ```bash
-git clone https://github.com/your-username/project-name.git 
+git clone https://github.com/AbdeIkader/Todo-App.git
 
-
-
-Clone this repository to your local machine to get started.
-
-```bash
-git clone https://github.com/your-username/project-name.git
 
