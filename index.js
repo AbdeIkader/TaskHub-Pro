@@ -5,9 +5,9 @@ process.on("uncaughtException", (err) => {
 import * as dotenv from "dotenv";
 dotenv.config();
 import express from "express";
-import { dbConnect } from "./database/dbConnection.js";
-import userRouter from "./src/modules/users/user.routes.js";
-import taskRouter from "./src/modules/tasks/task.routes.js";
+import { dbConnect } from "./DB/dbConnection.js";
+import userRouter from "./src/modules/Users/user.routes.js";
+import taskRouter from "./src/modules/Tasks/task.routes.js";
 import { AppError } from "./src/utils/AppError.js";
 import { errorHandling } from "./src/middleware/errorHandlingMiddleware.js";
 
@@ -18,6 +18,7 @@ app.use(express.json());
 dbConnect();
 app.use(userRouter);
 app.use(taskRouter);
+
 
 app.use("*", (req, res, next) => {
   next(new AppError(`Invalid Url ${req.originalUrl}`, 404));

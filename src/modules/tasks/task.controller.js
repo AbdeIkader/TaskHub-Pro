@@ -1,5 +1,5 @@
-import { taskModel } from "../../../database/models/task.model.js";
-import { userModel } from "../../../database/models/user.model.js";
+import { taskModel } from "../../../DB/models/task.model.js";
+import { userModel } from "../../../DB/models/user.model.js";
 import { AppError } from "../../utils/AppError.js";
 import { catchAsycError } from "../../utils/catchAsyncErrors.js";
 

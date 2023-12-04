@@ -1,15 +1,16 @@
-import { userModel } from "../../../database/models/user.model.js";
+import { userModel } from "../../../DB/models/user.model.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import { sendEmail } from "../../../email/nodemailer.js";
 import { catchAsycError } from "../../utils/catchAsyncErrors.js";
 import { AppError } from "../../utils/AppError.js";
-import { signInSchema, signUpSchema } from "./user.validation.js";
 
 //1-Sign Up
 
 const signUp = catchAsycError(async (req, res, next) => {
   const { userName, email, password, cpassword, age, gender, phone } = req.body;
+
+
 
   if (password == cpassword) {
     const isUserExist = await userModel.findOne({ email });
@@ -25,6 +26,7 @@ const signUp = catchAsycError(async (req, res, next) => {
         age,
         gender,
         phone,
+        profileImg : req.file.filename
       });
       sendEmail({ email });
       res.json({ Message: "User added succesfully", addUser });
@@ -117,6 +119,15 @@ const changePassword = catchAsycError(async (req, res, next) => {
   }
 });
 
+//
+
+const getAllUsers = catchAsycError(async (req,res,next)=>{
+
+  const getAllUsers = await userModel.find({})
+
+  res.json({message:"success",getAllUsers})
+})
+
 //5-Update User
 
 const updateUser = catchAsycError(async (req, res, next) => {
@@ -184,6 +195,7 @@ export {
   signUp,
   verifiedEmail,
   signIn,
+  getAllUsers,
   changePassword,
   updateUser,
   deleteUser,

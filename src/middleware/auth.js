@@ -1,5 +1,5 @@
 import jwt from "jsonwebtoken";
-import { userModel } from "../../database/models/user.model.js";
+import { userModel } from "../../DB/models/user.model.js";
 import { catchAsycError } from "../utils/catchAsyncErrors.js";
 
 export const auth = catchAsycError(async (req, res, next) => {

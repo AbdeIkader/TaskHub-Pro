@@ -24,6 +24,10 @@ const userSchema = new Schema(
       enum: ["Male", "Female"],
       default: "Male",
     },
+    profileImg:{
+      type:String,
+      required:true
+    },
     phone: {
       type: String,
       required: true,

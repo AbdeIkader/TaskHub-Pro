@@ -7,6 +7,6 @@ export const dbConnect = () => {
       console.log("DB Connected Successfully 💥");
     })
     .catch(() => {
-      console.log("DB Failed to connect 🚫");
+      console.log("DB Failed to connect 🚫");s
     });
 };

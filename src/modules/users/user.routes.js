@@ -2,6 +2,7 @@ import express from "express";
 import {
   changePassword,
   deleteUser,
+  getAllUsers,
   logOut,
   signIn,
   signUp,
@@ -18,11 +19,13 @@ import {
   verifySchema,
 } from "./user.validation.js";
 import { validation } from "../../middleware/validation.js";
+import { uploadSingleFile } from "../../multer/multer.js";
 const router = express.Router();
 
-router.post("/signUp", validation(signUpSchema, "body"), signUp);
+router.post("/signUp",uploadSingleFile('profileImg',"Profile Photo"), signUp);
 router.get("/verify/:token", validation(verifySchema, "params"), verifiedEmail);
 router.post("/signIn", validation(signInSchema, "body"), signIn);
+router.get("/getAllUsers", getAllUsers);
 router.patch(
   "/changePassword",
   validation(changePasswordSchema, "body"),
