@@ -4,13 +4,18 @@ import bcrypt from "bcryptjs";
 import { sendEmail } from "../../../email/nodemailer.js";
 import { catchAsycError } from "../../utils/catchAsyncErrors.js";
 import { AppError } from "../../utils/AppError.js";
+import { v2 as cloudinary } from "cloudinary";
+
+cloudinary.config({
+  cloud_name: "dbqw4t4st",
+  api_key: "913514873627719",
+  api_secret: "atfT-bht8ES6pWTX7GJWF4i6gIg",
+});
 
 //1-Sign Up
 
 const signUp = catchAsycError(async (req, res, next) => {
   const { userName, email, password, cpassword, age, gender, phone } = req.body;
-
-
 
   if (password == cpassword) {
     const isUserExist = await userModel.findOne({ email });
@@ -19,17 +24,21 @@ const signUp = catchAsycError(async (req, res, next) => {
       return next(new AppError(`User is already exist`, 409));
     } else {
       const hash = bcrypt.hashSync(password, 8);
-      const addUser = await userModel.insertMany({
-        userName,
-        email,
-        password: hash,
-        age,
-        gender,
-        phone,
-        profileImg : req.file.filename
+
+      cloudinary.uploader.upload(req.file.path, async function (error, result) {
+        console.log(result);
+        const addUser = await userModel.insertMany({
+          userName,
+          email,
+          password: hash,
+          age,
+          gender,
+          phone,
+          profileImg: result.secure_url,
+        });
+        sendEmail({ email });
+        res.json({ Message: "User added succesfully", addUser });
       });
-      sendEmail({ email });
-      res.json({ Message: "User added succesfully", addUser });
     }
   } else {
     next(new AppError(`Password and conform password doesn't match`, 400));
@@ -121,12 +130,11 @@ const changePassword = catchAsycError(async (req, res, next) => {
 
 //
 
-const getAllUsers = catchAsycError(async (req,res,next)=>{
+const getAllUsers = catchAsycError(async (req, res, next) => {
+  const getAllUsers = await userModel.find({});
 
-  const getAllUsers = await userModel.find({})
-
-  res.json({message:"success",getAllUsers})
-})
+  res.json({ message: "success", getAllUsers });
+});
 
 //5-Update User
 

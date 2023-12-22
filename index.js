@@ -15,21 +15,24 @@ const app = express();
 const PORT = 4000;
 
 app.use(express.json());
-dbConnect();
+app.use(express.static('uploads'));
 app.use(userRouter);
 app.use(taskRouter);
 
+dbConnect();
 
 app.use("*", (req, res, next) => {
   next(new AppError(`Invalid Url ${req.originalUrl}`, 404));
 });
 
 app.use(errorHandling);
+
+
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
 
 process.on("unhandledRejection", (err) => {
-  //To handle the errors outside express
   console.log("Error", err);
 });

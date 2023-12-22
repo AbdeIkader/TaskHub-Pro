@@ -5,8 +5,10 @@ import jwt from "jsonwebtoken";
 export const sendEmail = async (options) => {
   const transporter = nodemailer.createTransport({
     service: "gmail",
+    tls: {
+      rejectUnauthorized: false
+    },
     auth: {
-      // TODO: replace `user` and `pass` values from <https://forwardemail.net>
       user: process.env.email,
       pass: process.env.emailpass,
     },

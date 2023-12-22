@@ -50,4 +50,9 @@ const userSchema = new Schema(
   }
 );
 
+// userSchema.post('init',function(doc){
+//   console.log(doc);
+//   doc.profileImg = `${process.env.BASE_URL}/Profile Photo/${doc.profileImg}`
+// })
+
 export const userModel = model("user", userSchema);
