@@ -65,39 +65,47 @@ BASE_URL = http://localhost:4000
 
 ## Project Structure
 
-.
+Trello Assignment
+│
 ├── DB
-│ └── models
-│ ├── task.model.js
-│ └── user.model.js
+│ ├── models
+│ │ ├── task.model.js
+│ │ └── user.model.js
 │ └── dbConnection.js
+│
 ├── email
 │ ├── html.js
 │ └── nodemailer.js
+│
 ├── src
 │ ├── middleware
 │ │ ├── auth.js
 │ │ ├── errorHandlingMiddleware.js
 │ │ └── validation.js
+│ │
 │ ├── modules
 │ │ ├── Tasks
 │ │ │ ├── task.controller.js
 │ │ │ ├── task.model.js
 │ │ │ ├── task.routes.js
 │ │ │ └── task.validation.js
+│ │ │
 │ │ └── Users
 │ │ ├── user.controller.js
 │ │ ├── user.model.js
 │ │ ├── user.routes.js
 │ │ └── user.validation.js
+│ │
 │ ├── multer
 │ │ └── multer.js
-│ ├── utils
-│ │ ├── AppError.js
-│ │ └── catchAsyncErrors.js
-│ └── index.js
+│ │
+│ └── utils
+│ ├── AppError.js
+│ └── catchAsyncErrors.js
+│
 ├── uploads
 │ └── Profile Photo
+│
 ├── .env
 ├── .gitignore
 ├── index.js
@@ -141,4 +149,4 @@ This project is licensed under the ISC License.
 
 
 
-.
+
