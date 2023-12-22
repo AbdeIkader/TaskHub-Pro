@@ -31,16 +31,16 @@ The backend structure is built to support scalability and maintainability, with 
 ## Configuration
 
 ### .env File
-Create a `.env` file in the root directory with the following configurations:
+Create a `.env` file in the root directory with the following configurations (replace with your actual data):
 
 ```
-JWT_KEY = abdelkadertrello
-SALT_ROUND = 8
-MONGO_URL = mongodb://127.0.0.1:27017/TrelloApp
-MODE = dev
-email= your email
-emailpass = your password
-BASE_URL = http://localhost:4000
+JWT_KEY=abdelkadertrello
+SALT_ROUND=8
+MONGO_URL=mongodb://127.0.0.1:27017/TrelloApp
+MODE=dev
+email=your-email@example.com
+emailpass=your-email-password
+BASE_URL=http://localhost:4000
 ```
 
 ## API Endpoints
@@ -75,7 +75,9 @@ Trello Assignment
 │   └── dbConnection.js
 │
 ├── email
-│   ├── html.js
+│   ├── html
+
+.js
 │   └── nodemailer.js
 │
 ├── src
@@ -113,6 +115,7 @@ Trello Assignment
 ├── package-lock.json
 ├── package.json
 └── README.md
+```
 
 ## Installation and Running
 
@@ -147,7 +150,4 @@ This project is licensed under the ISC License.
 - Email: [abdelrahmanabdelkader2002@gmail.com](mailto:abdelrahmanabdelkader2002@gmail.com)
 
 ---
-
-
-
-
+```
