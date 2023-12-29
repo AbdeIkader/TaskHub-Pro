@@ -1,4 +1,4 @@
-# Trello App
+# TaskHub Pro
 
 ## Overview
 
@@ -66,7 +66,7 @@ BASE_URL=http://localhost:4000
 ## Project Structure
 
 ```plaintext
-Trello Assignment
+TaskHub Pro
 │
 ├── DB
 │   ├── models
@@ -125,7 +125,7 @@ Trello Assignment
    ```
 2. Navigate to the project directory:
    ```
-   cd Trello Assignment
+   cd TaskHub Pro
    ```
 3. Install dependencies:
    ```
